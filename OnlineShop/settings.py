@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cart',
     'accounts',
     'orders',
     'products',
@@ -128,3 +127,16 @@ STATICFILES_DIRS = (
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media")
 MEDIA_URL = '/media/'
+
+if DEBUG:
+    # test keys
+    STRIPE_PUBLISHABLE_KEY = '28'
+    STRIPE_SECRET_KEY = '5'
+    BT_ENVIRONMENT='sandbox'
+    BT_MERCHANT_ID='2'
+    BT_PUBLIC_KEY='10'
+    BT_PRIVATE_KEY='2'
+else:
+    # live keys
+    STRIPE_PUBLISHABLE_KEY = 'YOUR STRIPE LIVE PUB KEY'
+    STRIPE_SECRET_KEY = 'YOUR STRIPE LIVE SECRET KEY'
