@@ -38,9 +38,32 @@ def add_to_cart(request,**kwargs):
     return redirect(reverse('products:product_list'))
 
 @login_required()
+def delete_from_cart(request, item_id):
+    item_to_delete = OrderItem.objects.filter(pk=item_id)
+    if item_to_delete.exists():
+        item_to_delete[0].delete()
+        messages.info(request, "Item has been deleted")
+    return redirect(reverse('orders:order_summary'))
+
+@login_required()
 def order_summary(request, **kwargs):
+    existing_order = get_user_pending_order(request)
+    if request.POST:
+        for item in existing_order.items.all():
+            item_quantity = request.POST.get('quantity'+str(item.id), '')
+            item.quantity = item_quantity
+            item.save()
+        return redirect(reverse('orders:checkout'))
+    context = {
+        'order': existing_order
+    }
+
+
+    return render(request, 'cart.html', context)
+
+def checkout(request, **kwargs):
     existing_order = get_user_pending_order(request)
     context = {
         'order': existing_order
     }
-    return render(request, 'cart.html', context)
+    return render(request, 'checkout.html', context)

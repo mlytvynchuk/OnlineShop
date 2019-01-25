@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'products',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,3 +141,5 @@ else:
     # live keys
     STRIPE_PUBLISHABLE_KEY = 'YOUR STRIPE LIVE PUB KEY'
     STRIPE_SECRET_KEY = 'YOUR STRIPE LIVE SECRET KEY'
+
+# AUTH_USER_MODEL = 'accounts.CustomUser'

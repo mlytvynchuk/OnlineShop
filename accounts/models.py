@@ -2,7 +2,10 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 
+# from OnlineShop import settings
+# from accounts.managers import CustomUserManager
 from products.models import Product
+
 
 # import stripe
 #
@@ -28,3 +31,42 @@ def post_save_profile_create(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(post_save_profile_create, sender=settings.AUTH_USER_MODEL)
+
+
+
+# from django.db import models
+# from django.contrib.auth.models import AbstractBaseUser
+# from django.contrib.auth.models import PermissionsMixin
+# from django.utils.translation import gettext_lazy as _
+#
+#
+# class CustomUser(AbstractBaseUser, PermissionsMixin):
+#     email = models.EmailField(unique=True, null=True)
+#     is_staff = models.BooleanField(
+#         _('staff status'),
+#         default=False,
+#         help_text=_('Designates whether the user can log into this admin site.'),
+#     )
+#     is_active = models.BooleanField(
+#         _('active'),
+#         default=True,
+#         help_text=_(
+#             'Designates whether this user should be treated as active. ''Unselect this instead of deleting accounts.'
+#         ),
+#     )
+#
+#     USERNAME_FIELD = 'email'
+#     objects = CustomUserManager()
+#
+#     class Meta:
+#         verbose_name = _('user')
+#         verbose_name_plural = _('users')
+#
+#     def get_full_name(self):
+#         return self.email
+#
+#     def get_short_name(self):
+#         return self.get_full_name()
+#
+#     def __str__(self):
+#         return self.email
