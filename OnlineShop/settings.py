@@ -142,4 +142,9 @@ else:
     STRIPE_PUBLISHABLE_KEY = 'YOUR STRIPE LIVE PUB KEY'
     STRIPE_SECRET_KEY = 'YOUR STRIPE LIVE SECRET KEY'
 
-# AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.models.EmailAuthBackend'
+]
+LOGIN_REDIRECT_URL = 'products:product_list'
+LOGIN_URL = 'login'
