@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'orders',
     'products',
 ]
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 
 MIDDLEWARE = [

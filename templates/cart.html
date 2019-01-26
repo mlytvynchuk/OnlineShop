@@ -45,7 +45,7 @@
 
                             <tr class="cart-rows" id="cart_row">
 							<td class="cart_product">
-{#								<a href=""><img src="images/cart/one.png" alt=""></a>#}
+								<a href=""><img src="{{ item.product.images.first.image.url }}" alt="{{ item.product.images.first.alt }}" style="width: 70px;image-resolution: from-image"></a>
 							</td>
 							<td class="cart_description">
 								<h4><a href="">{{ item.product.name }}</a></h4>

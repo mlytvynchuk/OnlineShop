@@ -4,13 +4,13 @@ from accounts.models import Profile
 from products.models import Product
 
 
+
 class OrderItem(models.Model):
     product = models.OneToOneField(Product, on_delete=models.SET_NULL, null=True)
     is_ordered = models.BooleanField(default=False)
     date_added = models.DateTimeField(auto_now=True)
     date_ordered = models.DateTimeField(null=True)
     quantity = models.IntegerField(default=1)
-
     def __str__(self):
         return self.product.name
 

@@ -18,12 +18,16 @@ from django.contrib.auth.views import LoginView
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+
+from accounts.views import *
 import products
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('products.urls'),name='products'),
     path('',include('orders.urls'),name='orders'),
-    path('login/',LoginView.as_view(template_name="login.html"),name="login")
+    path('login/',authview,name="login"),
+    path('logout/',logout,name="logout")
+
 ]\
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
   + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

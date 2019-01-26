@@ -37,10 +37,20 @@ post_save.connect(post_save_profile_create, sender=settings.AUTH_USER_MODEL)
 
 class EmailAuthBackend():
     def authenticate(self,request,username,password):
-        try:
-            user = User.objects.get(email=username)
-            success = user.check_password(password)
+        if '@' in username:
+            try:
+                user = User.objects.get(email=username)
+                success = user.check_password(password)
 
+                if success:
+                    return user
+            except User.DoesNotExist:
+                pass
+            return None
+
+        try:
+            user = User.objects.get(username=username)
+            success = user.check_password(password)
             if success:
                 return user
         except User.DoesNotExist:

@@ -11,7 +11,6 @@ urlpatterns = [
     path('delete-from-cart/<item_id>/',delete_from_cart,name="delete_from_cart"),
     path('checkout/',checkout,name="checkout"),
 
-
-]\
+              ]\
   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
   + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

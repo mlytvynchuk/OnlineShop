@@ -159,7 +159,10 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="" alt="" />
+{#										<img src="{{ product.images.first.url }}" alt="" />#}
+                                        <img src="{{ product.images.first.image.url }}" alt="" />
+
+
 										<h2>${{ product.price }}</h2>
 										<p>{{ product.name }}</p>
                                         {% if product in current_order_products %}
